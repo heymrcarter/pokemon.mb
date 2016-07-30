@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Pokemon.Mb")]
+[assembly: AssemblyTitle("Pokemon.Mb.UnitTests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Louglu")]
-[assembly: AssemblyProduct("Pokemon.Mb")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("Pokemon.Mb.UnitTests")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,15 +20,17 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("b5ea1a97-cb45-45e8-9e62-b5d2660cca4f")]
+[assembly: Guid("c73d5e6c-7ae1-4db4-b4f1-0a6b6e85126b")]
 
 // Version information for an assembly consists of the following four values:
 //
 //      Major Version
 //      Minor Version 
-//      Patch Number
+//      Build Number
+//      Revision
 //
-// You can specify all the values or you can default the Revision and Build Numbers 
+// You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("0.1.0")]
-[assembly: AssemblyFileVersion("0.1.0")]
+// [assembly: AssemblyVersion("1.0.*")]
+[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyFileVersion("1.0.0.0")]
