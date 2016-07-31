@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
 using Nancy;
+using Nancy.ModelBinding;
+using Nancy.Responses;
 using Pokemon.Mb.Models;
+using Pokemon = Pokemon.Mb.Models.Pokemon;
 
 namespace Pokemon.Mb.Modules
 {
@@ -26,6 +29,21 @@ namespace Pokemon.Mb.Modules
                     }
                 };
 
+                return response;
+            };
+
+            Post["/"] = parameters =>
+            {
+                var pokemon = this.Bind<Models.Pokemon>(new BindingConfig
+                {
+                    BodyOnly = true
+                });
+
+                var response = new JsonResponse(pokemon, new DefaultJsonSerializer())
+                {
+                    StatusCode = HttpStatusCode.Created,
+                    ReasonPhrase = "Created"
+                };
                 return response;
             };
         }
