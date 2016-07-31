@@ -68,8 +68,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IndexModule.spec.cs" />
-    <Compile Include="PokemonModule.spec.cs" />
+    <Compile Include="Modules\IndexModule.spec.cs" />
+    <Compile Include="Modules\Pokemon\Get.spec.cs" />
+    <Compile Include="Modules\Pokemon\Post.spec.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

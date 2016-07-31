@@ -1,10 +1,10 @@
-﻿using Nancy;
+﻿using System;
+using Nancy;
 using Nancy.Testing;
-using System;
 using Pokemon.Mb.Models;
 using Xunit;
 
-namespace Pokemon.Mb.UnitTests
+namespace Pokemon.Mb.UnitTests.Modules
 {
     public class IndexModuleSpec : IDisposable
     {

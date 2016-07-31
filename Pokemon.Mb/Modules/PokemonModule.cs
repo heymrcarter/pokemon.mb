@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Nancy;
 using Nancy.ModelBinding;
 using Nancy.Responses;
@@ -11,35 +12,37 @@ namespace Pokemon.Mb.Modules
     {
         public PokemonModule() : base("/pokemon")
         {
-            Get["/"] = parameters =>
+            var pokemon = new List<Models.Pokemon>
             {
-                var response = new List<Models.Pokemon>
+                new Models.Pokemon
                 {
-                    new Models.Pokemon
+                    Id = 1,
+                    Number = 1,
+                    Name = "Bulbasaur",
+                    Rarity = new RarityLevel
                     {
                         Id = 1,
-                        Number = 1,
-                        Name = "Bulbasaur",
-                        Rarity = new RarityLevel
-                        {
-                            Id = 1,
-                            Name = "Special",
-                            Abbrivation = "SP"
-                        }
+                        Name = "Special",
+                        Abbrivation = "SP"
                     }
-                };
-
-                return response;
+                }
             };
 
-            Post["/"] = parameters =>
+            Get["/"] = _ => pokemon;
+
+            Get["/{id}"] = parameters =>
             {
-                var pokemon = this.Bind<Models.Pokemon>(new BindingConfig
+                return pokemon.FirstOrDefault(p => p.Id == parameters.id);
+            };
+
+            Post["/"] = _ =>
+            {
+                var body = this.Bind<Models.Pokemon>(new BindingConfig
                 {
                     BodyOnly = true
                 });
 
-                var response = new JsonResponse(pokemon, new DefaultJsonSerializer())
+                var response = new JsonResponse(body, new DefaultJsonSerializer())
                 {
                     StatusCode = HttpStatusCode.Created,
                     ReasonPhrase = "Created"
