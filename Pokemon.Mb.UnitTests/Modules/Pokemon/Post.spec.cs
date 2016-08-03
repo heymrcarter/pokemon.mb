@@ -1,4 +1,5 @@
-﻿using CsQuery.ExtensionMethods;
+﻿using System.Collections.Generic;
+using CsQuery.ExtensionMethods;
 using Nancy.Testing;
 using Nancy;
 using Pokemon.Mb.Models;
@@ -50,6 +51,47 @@ namespace Pokemon.Mb.UnitTests.Modules.Pokemon
             Assert.Equal(pokemon.Rarity.Name, body.Rarity.Name);
             Assert.Equal(pokemon.Rarity.Abbrivation, body.Rarity.Abbrivation);
             Assert.Equal(pokemon.Rarity.Id, body.Rarity.Id);
+        }
+
+        [Fact]
+        public void Number_available_pokemon_increments_when_pokemon_added()
+        {
+            var newPokemon = new Models.Pokemon
+            {
+                Id = 2,
+                Name = "Ivysaur",
+                Number = 2,
+                Rarity = new RarityLevel
+                {
+                    Id = 1,
+                    Name = "Special",
+                    Abbrivation = "SP"
+                }
+            };
+
+            _browser.Post("/pokemon", with =>
+            {
+                with.HttpRequest();
+                with.Header("Accept", "application/json");
+                with.Header("Content-type", "application/json");
+                with.Body(newPokemon.ToJSON());
+            });
+
+            var getResult = _browser.Get("/pokemon", with =>
+            {
+                with.HttpRequest();
+                with.Header("Accept", "application/json");
+            });
+
+            var result = getResult.Body.DeserializeJson<List<Models.Pokemon>>();
+
+            Assert.Equal(2, result.Count);
+        }
+
+        [Fact]
+        public void Should_return_bad_request_for_invalid_body()
+        {
+            
         }
     }
 }

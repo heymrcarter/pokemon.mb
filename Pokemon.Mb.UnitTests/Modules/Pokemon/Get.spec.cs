@@ -58,5 +58,18 @@ namespace Pokemon.Mb.UnitTests.Modules.Pokemon
             Assert.Equal("SP", pokemon.Rarity.Abbrivation);
             Assert.Equal("Special", pokemon.Rarity.Name);
         }
+
+        [Fact]
+        public void Should_return_404_if_id_doesnt_exist()
+        {
+            var result = _browser.Get("/pokemon/34", with =>
+            {
+                with.HttpRequest();
+                with.Header("Accept", "application/json");
+                with.Header("Content-type", "application/json");
+            });
+
+            Assert.Equal(HttpStatusCode.NotFound, result.StatusCode);
+        }
     }
 }

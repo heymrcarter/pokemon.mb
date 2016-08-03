@@ -78,6 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Data\IPokemonProvider.cs" />
+    <Compile Include="Data\IPokemonRepository.cs" />
+    <Compile Include="Data\PokemonRepository.cs" />
     <Compile Include="Models\MetadataResponse.cs" />
     <Compile Include="Models\Pokemon.cs" />
     <Compile Include="Models\RarityLevel.cs" />

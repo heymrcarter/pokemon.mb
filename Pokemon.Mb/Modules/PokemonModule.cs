@@ -32,7 +32,14 @@ namespace Pokemon.Mb.Modules
 
             Get["/{id}"] = parameters =>
             {
-                return pokemon.FirstOrDefault(p => p.Id == parameters.id);
+                var requestedPokemon = pokemon.FirstOrDefault(p => p.Id == parameters.id);
+
+                if (requestedPokemon == null)
+                {
+                    return HttpStatusCode.NotFound;
+                }
+
+                return requestedPokemon;
             };
 
             Post["/"] = _ =>
@@ -41,6 +48,8 @@ namespace Pokemon.Mb.Modules
                 {
                     BodyOnly = true
                 });
+
+                pokemon.Add(body);
 
                 var response = new JsonResponse(body, new DefaultJsonSerializer())
                 {
