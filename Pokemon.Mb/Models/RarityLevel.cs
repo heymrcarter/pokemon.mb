@@ -7,5 +7,6 @@
         public string Name { get; set; }
 
         public string Abbrivation { get; set; }
+        public static RarityLevel Epic { get; internal set; }
     }
 }
