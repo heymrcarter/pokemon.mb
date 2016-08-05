@@ -79,6 +79,7 @@
     <Compile Include="Data\PokemonProvider.spec.cs" />
     <Compile Include="Data\PokemonRepository.spec.cs" />
     <Compile Include="Data\RarityProvider.spec.cs" />
+    <Compile Include="Data\RarityRepository.spec.cs" />
     <Compile Include="Modules\IndexModule.spec.cs" />
     <Compile Include="Modules\Pokemon\Get.spec.cs" />
     <Compile Include="Modules\Pokemon\Post.spec.cs" />
