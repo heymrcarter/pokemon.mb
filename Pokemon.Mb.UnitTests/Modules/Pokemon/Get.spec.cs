@@ -28,7 +28,7 @@ namespace Pokemon.Mb.UnitTests.Modules.Pokemon
             var pokemon = response.FirstOrDefault();
 
             Assert.Equal(HttpStatusCode.OK, result.StatusCode);
-            Assert.NotEmpty(response);
+            Assert.Equal(151, response.Count);
             Assert.NotNull(pokemon);
             Assert.NotNull(pokemon.Name);
             Assert.NotNull(pokemon.Id);
@@ -54,7 +54,6 @@ namespace Pokemon.Mb.UnitTests.Modules.Pokemon
             Assert.Equal(1, pokemon.Number);
             Assert.Equal(1, pokemon.Id);
             Assert.NotNull(pokemon.Rarity);
-            Assert.Equal(1, pokemon.Rarity.Id);
             Assert.Equal("SP", pokemon.Rarity.Abbrivation);
             Assert.Equal("Special", pokemon.Rarity.Name);
         }
@@ -62,7 +61,7 @@ namespace Pokemon.Mb.UnitTests.Modules.Pokemon
         [Fact]
         public void Should_return_404_if_id_doesnt_exist()
         {
-            var result = _browser.Get("/pokemon/34", with =>
+            var result = _browser.Get("/pokemon/200", with =>
             {
                 with.HttpRequest();
                 with.Header("Accept", "application/json");
